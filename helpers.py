@@ -32,7 +32,7 @@ def unicounter(note):
     return counter
 
 # test
-print(unicounter("simple lane of Simple text."))
+print(unicounter("viktor maksimych ne normalniy mujik a viktor yanukovich normalniy mujik ne"))
 
 
 
