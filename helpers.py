@@ -32,7 +32,7 @@ def unicounter(note):
     return counter
 
 # test
-print(unicounter("viktor maksimych ne normalniy mujik a viktor yanukovich normalniy mujik ne"))
+# print(unicounter("viktor maksimych ne normalniy mujik a viktor yanukovich normalniy mujik ne"))
 
 
 
