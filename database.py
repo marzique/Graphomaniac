@@ -23,19 +23,27 @@ class Notes(Base):
 # CREATE a table
 Base.metadata.create_all(engine)
 
-test_note_string = "Really really long string, with comma and a dot."
-test_note_quantity = unicounter(test_note_string)
-
-
 
 '''ACTIONS'''
 
+note_string1 = "Really really long string, with comma and a dot."
+note_string2 = "Really really long string, even longer than a previous one."
+
 # fill in one row (add new note)
-note1 = Notes(note_string = test_note_string, unique_quantity = test_note_quantity)
+note1 = Notes(note_string = note_string1,
+              unique_quantity = unicounter(note_string1))
+
+note2 = Notes(note_string = note_string2,
+              unique_quantity = unicounter(note_string2))
+
+
 
 # put Notes instance to session
-session.add(note1)
+# use session.bulk_save_objects([note1, note2, noteN]) when multiple objects filling in
+# session.add(note1)
+session.bulk_save_objects([note1, note2])
 session.commit()
 
-
-print(note1.unique_quantity)
+# pull of data(notes) query
+for note in session.query(Notes):
+    print(note.note_string + " : " + str(note.unique_quantity))
