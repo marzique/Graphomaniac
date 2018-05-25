@@ -7,6 +7,22 @@ def unicounter(note):
     # dict to store pairs {"word": frequency)
     unique_words = {}
     counter = 0
+    s = 0
+
+    '''fixing bug with spaces in the beginning of the string'''
+
+    # count spaces before
+    for letter in note:
+        if letter == " ":
+            s += 1
+        else:
+            break
+
+    # new string from first letter
+    note = note[s:]
+
+    # check
+    # print(note)
 
     # divide string to list of words
     note = re.split('\W+', note)
@@ -30,10 +46,13 @@ def unicounter(note):
                 break
 
             counter += 1
+
     return counter
 
 # test
-# print(unicounter("viktor maksimych ne normalniy mujik a viktor yanukovich normalniy mujik ne"))
+# print(unicounter("     viktor maksimych ne normalniy mujik a viktor yanukovich normalniy mujik ne"))
+
+
 
 
 
