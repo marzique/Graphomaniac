@@ -5,6 +5,9 @@
 	<title>Notes</title>
 	<link rel="stylesheet" href="../static/main.css">
 </head>
+
+<!--blue line top-->
+
 <body>
 	<header>
 		<div class="upline">
@@ -20,10 +23,16 @@
 		</div>
 	</header>
 
+<!--notes sorted-->
+
 	<section>
 		<ul class="notes">
-			<li>NOTES TEST1</li>
-			<li>NOTES TEST2</li>
+			<!--loop for will be here-->
+            {% for note in notes_list%}
+
+            <li>{{note.note_string}}</li>
+
+            {% endfor %}
 		</ul>
 	</section>
 </body>
