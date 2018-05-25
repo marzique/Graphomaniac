@@ -1,6 +1,6 @@
-from flask import Flask, flash, redirect, render_template, request, session, url_for
+from flask import Flask, render_template, request, session, url_for
 from helpers import unicounter
-from sqlalchemy import create_engine, Column, Integer, Numeric, String
+from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
