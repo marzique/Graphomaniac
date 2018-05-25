@@ -8,11 +8,11 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
 
-        if not request.form.get("username"):
-            pass
+        if not request.form.get("note"):
+            return render_template("error.html")
 
 
-        return render_template("index.html")
+        return render_template("notes.html")
 
     else:
         return render_template("index.html")
