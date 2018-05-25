@@ -8,13 +8,13 @@ from sqlalchemy.ext.declarative import declarative_base
 # configure application
 app = Flask(__name__)
 
-'''SETUP DATABASE'''
+# SETUP DATABASE
 engine = create_engine('sqlite:///notes.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
 
-'''Cleares table after restart'''
+
 def clear_table():
     session.query(Notes).delete()
     session.commit()
@@ -29,6 +29,8 @@ class Notes(Base):
 
 # CREATE a table
 Base.metadata.create_all(engine)
+
+# Cleares table after restart
 clear_table()
 
 @app.route("/" , methods=["GET", "POST"])
@@ -36,19 +38,16 @@ clear_table()
 def index():
     if request.method == "POST":
 
+        # threads issue fix
         Session = sessionmaker(bind=engine)
         session = Session()
 
         # retrieve note from input box
         note = request.form.get("note")
+
         # empty string check
         if not note:
             return render_template("error.html")
-
-        '''retreive note'''
-        # print(note + " : " + str(unicounter(note)))
-
-        '''ACTIONS'''
 
         # fill in one row (adding new note)
         note1 = Notes(note_string=note, unique_quantity=unicounter(note))
@@ -62,10 +61,11 @@ def index():
         # list of sorted notes
         notes_list = session.query(Notes).order_by(Notes.unique_quantity.desc())
 
-        # query to pull of data(notes) ordered by uniqueness
+        # output test
         for note in notes_list:
             print(note.note_string + " : " + str(note.unique_quantity))
 
+        # rendering sorted list
         return render_template("notes.html", notes_list=notes_list)
 
     else:
