@@ -15,7 +15,7 @@ def unicounter(note):
         if word.lower() in unique_words:
             old_quantity = int(unique_words[word.lower()])
             unique_words[word.lower()] = str(old_quantity + 1)
-            print("word exists")
+            print("word exists (incremented quantity)")
         else:
             unique_words[str(word.lower())] = str(1)
             print("word added")
