@@ -25,9 +25,12 @@ Base.metadata.create_all(engine)
 
 
 '''ACTIONS'''
+# Test with 2 strings
 
+note_string4 = "Really really long string, even longer than a previous one sdasd asd sd asd a a asd aa."
 note_string1 = "Really really long string, with comma and a dot."
 note_string2 = "Really really long string, even longer than a previous one."
+note_string3 = "really Really reAlLy ok koko."
 
 # fill in one row (add new note)
 note1 = Notes(note_string = note_string1,
@@ -36,14 +39,20 @@ note1 = Notes(note_string = note_string1,
 note2 = Notes(note_string = note_string2,
               unique_quantity = unicounter(note_string2))
 
+note3 = Notes(note_string = note_string3,
+              unique_quantity = unicounter(note_string3))
+
+note4 = Notes(note_string = note_string4,
+              unique_quantity = unicounter(note_string4))
+
 
 
 # put Notes instance to session
 # use session.bulk_save_objects([note1, note2, noteN]) when multiple objects filling in
 # session.add(note1)
-session.bulk_save_objects([note1, note2])
+session.bulk_save_objects([note1, note2, note3, note4])
 session.commit()
 
-# pull of data(notes) query
-for note in session.query(Notes):
+# query to pull of data(notes) ordered by quantity
+for note in session.query(Notes).order_by(Notes.unique_quantity):
     print(note.note_string + " : " + str(note.unique_quantity))
