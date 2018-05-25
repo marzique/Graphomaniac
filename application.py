@@ -1,5 +1,4 @@
 from flask import Flask, flash, redirect, render_template, request, session, url_for
-from helpers import *
 
 # configure application
 app = Flask(__name__)
@@ -8,6 +7,11 @@ app = Flask(__name__)
 @app.route("/index.html" , methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+
+        if not request.form.get("username"):
+            pass
+
+
         return render_template("index.html")
 
     else:

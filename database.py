@@ -53,6 +53,6 @@ note4 = Notes(note_string = note_string4,
 session.bulk_save_objects([note1, note2, note3, note4])
 session.commit()
 
-# query to pull of data(notes) ordered by quantity
+# query to pull of data(notes) ordered by uniqueness
 for note in session.query(Notes).order_by(Notes.unique_quantity):
     print(note.note_string + " : " + str(note.unique_quantity))

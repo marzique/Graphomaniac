@@ -3,11 +3,12 @@ import re
 def unicounter(note):
     '''Function returns number of unique words in string'''
 
+
     # dict to store pairs {"word": frequency)
     unique_words = {}
     counter = 0
 
-    # devide string to list of words
+    # divide string to list of words
     note = re.split('\W+', note)
 
     #write down data to dict

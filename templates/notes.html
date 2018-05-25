@@ -9,11 +9,11 @@
 	<header>
 		<div class="upline">
 			<div class="container">
-				<a href="index.html"><p>Graphomaniac notes</p></a>
+				<a href="{{ url_for('index') }}"><p>Graphomaniac notes</p></a>
 				<nav>
 					<ul class="menu">
-						<li><a href="index.html">ADD</a></li>
-						<li><a href="notes.html">SHOW</a></li>
+						<li><a href="{{ url_for('index') }}">ADD</a></li>
+						<li><a href="{{ url_for('notes') }}">SHOW</a></li>
 					</ul>
 				</nav>
 			</div>
