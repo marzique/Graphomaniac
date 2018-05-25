@@ -1,4 +1,5 @@
 from flask import Flask, flash, redirect, render_template, request, session, url_for
+from helpers import unicounter
 
 # configure application
 app = Flask(__name__)
@@ -8,9 +9,14 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
 
-        if not request.form.get("note"):
+        # retrieve note from input box
+        note = request.form.get("note")
+        # empty string check
+        if not note:
             return render_template("error.html")
 
+        '''retreive not '''
+        print(note + " : " + str(unicounter(note)))
 
         return render_template("notes.html")
 
