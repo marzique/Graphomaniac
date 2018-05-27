@@ -101,7 +101,7 @@ input
 	margin: 0 auto;
 }
 
-.notes li
+li.notes
 {
 	color: #3958D0;
 	background-color: #d9edf7;
