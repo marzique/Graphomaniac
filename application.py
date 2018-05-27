@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, url_for
+from flask import Flask, render_template, request, session, url_for, redirect
 from helpers import unicounter
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker
@@ -34,7 +34,7 @@ Base.metadata.create_all(engine)
 clear_table()
 
 @app.route("/" , methods=["GET", "POST"])
-@app.route("/index.html" , methods=["GET", "POST"])
+@app.route("/index" , methods=["GET", "POST"])
 def index():
     if request.method == "POST":
 
@@ -66,15 +66,14 @@ def index():
             print(note.note_string + " : " + str(note.unique_quantity))
 
         # rendering sorted list
-        return render_template("notes.html", notes_list=notes_list)
+        return redirect(url_for('notes'))
 
     else:
         return render_template("index.html")
 
 
-@app.route("/notes.html")
+@app.route("/notes")
 def notes():
-    if request.method == "GET":
         Session = sessionmaker(bind=engine)
         session = Session()
         notes_list = session.query(Notes).order_by(Notes.unique_quantity.desc())
