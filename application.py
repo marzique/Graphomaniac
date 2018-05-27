@@ -3,6 +3,7 @@ from helpers import unicounter
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from flask_migrate import Migrate
 
 
 # configure application
@@ -13,6 +14,8 @@ engine = create_engine('sqlite:///notes.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
+
+migrate = Migrate(app, engine)
 
 
 def clear_table():

@@ -1,7 +1,6 @@
 from sqlalchemy import create_engine, Column, Integer, Numeric, String
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from helpers import *
 
 '''SETUP'''
 engine = create_engine('sqlite:///:memory:')
