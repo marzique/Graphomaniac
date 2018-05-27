@@ -101,10 +101,11 @@ input
 	margin: 0 auto;
 }
 
-.notes
+.notes li
 {
 	color: #3958D0;
 	background-color: #d9edf7;
+	margin-top = 200px;
 	margin-bottom: 10px;
 	margin-left: 250px;
 	margin-right: 250px;
