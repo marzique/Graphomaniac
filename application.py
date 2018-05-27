@@ -74,11 +74,12 @@ def index():
 
 @app.route("/notes.html")
 def notes():
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    notes_list = session.query(Notes).order_by(Notes.unique_quantity.desc())
+    if request.method == "GET":
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        notes_list = session.query(Notes).order_by(Notes.unique_quantity.desc())
 
-    return render_template("notes.html", notes_list=notes_list)
+        return render_template("notes.html", notes_list=notes_list)
 
 @app.route("/clear")
 def clear():
